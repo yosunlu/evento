@@ -1,11 +1,17 @@
-import Skeleton from "@/components/skeleton";
+
+
+import SkeletonCard from "@/components/skeleton-card"
 
 export default function Loading() {
   return (
-    <div className="flex flex-col items-center gap-y-4 pt-28">
-      <Skeleton/>
-      <Skeleton/>
-      <Skeleton/>
+    <div className="flex flex-wrap justify-center max-w-[1100px] mx-auto px-[20px] py-24">
+      {
+        Array.from({ length:6 }).map((item, i) => (
+          <SkeletonCard key={i}/>
+        ))
+      }
     </div>
   )
 }
+
+
