@@ -6,8 +6,8 @@ export type EventoEvent = {
     slug: string,
     city: string,
     location: string,
-    data: Date,
-    organizationName: string,
-    imageURL: string,
+    date: Date,
+    organizerName: string,
+    imageUrl: string,
     description: string
 }
