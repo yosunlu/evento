@@ -1,6 +1,6 @@
 import EventCard from "./event-card"
 import { sleep } from "@/lib/util";
-import { getEvents } from "@/lib/util";
+import { getEvents } from "@/lib/server-utils";
 import PaginationControls from "./pagination-controls";
 
 type EventListProps = {
