@@ -1,7 +1,7 @@
 import Image from "next/image";
 import H1 from "@/components/h1";
 import { Metadata } from "next";
-import { getEvent } from "@/lib/util";
+import { getEvent } from "@/lib/server-utils";
 
 type Props = {
   params: {
