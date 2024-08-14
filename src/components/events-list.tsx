@@ -5,7 +5,7 @@ import PaginationControls from "./pagination-controls";
 
 type EventListProps = {
   city : string,
-  page: number
+  page?: number
 }
 
 export default async function EventsList({
@@ -13,7 +13,7 @@ export default async function EventsList({
 } : EventListProps) {
 
   // await sleep(2000);
-  const {events, totalCount} = await getEvents(city, page);
+  const {events, totalCount} = await getEvents(city, page = 1);
   const previousPath = page > 1 ? `/events/${city}?page=${page - 1}` : ""
   const nextPath = totalCount > 6 * page ?  `/events/${city}?page=${page + 1}` : ""
   
