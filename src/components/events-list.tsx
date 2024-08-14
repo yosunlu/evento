@@ -17,5 +17,4 @@ export default async function EventsList({
         <EventCard key={event.id} event={event}/>
       ))}
     </section>
-  
 }
