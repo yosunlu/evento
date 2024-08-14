@@ -1,17 +1,21 @@
 import EventsList from "@/components/events-list"
 import H1 from "@/components/h1"
-import { EventoEvent } from "@/lib/types"
 import { Suspense } from "react"
 import Loading from "./loading"
 import { Metadata } from "next"
 import { title } from "process"
 import { capitalize } from "@/lib/util"
+import { useSearchParams } from "next/navigation"
 
 
 type Props = {
   params: {
     city: string;
   }
+}
+
+type EventsPageProps = Props & {
+  searchParams: {[key: string]: string | string[] | undefined}
 }
 
 export function generateMetadata( {params} : Props ) : Metadata {
@@ -21,9 +25,9 @@ export function generateMetadata( {params} : Props ) : Metadata {
   }
 }
 
-export default async function EventsPage({params}: Props) {
+export default async function EventsPage({params, searchParams}: EventsPageProps) {
   const city = params.city;
-
+  const page = searchParams.page || 1;
   
   return <main className="flex flex-col items-center py-24 px-[20px] min-h-[110vh]">
     
@@ -34,7 +38,7 @@ export default async function EventsPage({params}: Props) {
   
   
   <Suspense fallback={<Loading/>}>
-    <EventsList city={city}/>
+    <EventsList city={city} page={+page}/>
   </Suspense>
 
   </main>

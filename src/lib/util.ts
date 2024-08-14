@@ -24,7 +24,7 @@ export function capitalize(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-export async function getEvents(city : string) {
+export async function getEvents(city : string, page = 1) {
     // const response = await fetch(`https://bytegrad.com/course-assets/projects/evento/api/events?city=${city}`, {
     //     next: {
     //       revalidate: 300, 
@@ -37,10 +37,23 @@ export async function getEvents(city : string) {
       },
       orderBy: {
         date: "asc"
-      }
+      },
+      take: 6,
+      skip: (page - 1) * 6
     })
+    let totalCount;
 
-    return events;
+    if (city ==="all") {
+        totalCount = await prisma.eventoEvent.count()
+    } else {
+        totalCount = await prisma.eventoEvent.count({
+          where: {
+          city: capitalize(city)
+        }
+      })
+    }
+
+    return {events, totalCount};
 }
 
 export async function getEvent(slug: string){
@@ -55,6 +68,6 @@ export async function getEvent(slug: string){
     if (!event){
       return notFound();
     }
-    
+
     return event;
 }
