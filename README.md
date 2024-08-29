@@ -11,7 +11,6 @@ Evento is a platform that allows users to browse and discover events happening i
 - [Caching and Server Utilities](#caching-and-server-utilities)
 - [Getting Started](#getting-started)
 - [Deployment](#deployment)
-- [License](#license)
 
 ## Features
 
